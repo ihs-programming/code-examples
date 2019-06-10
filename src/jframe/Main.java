@@ -27,6 +27,16 @@ public class Main {
 		frame.pack();
 
 		/*
+		 * Exits the program when we click the red exit button.
+		 */
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		/*
+		 * Don't allow users to change the size (ensures our graphics will always
+		 * display properly).
+		 */
+		frame.setResizable(false);
+
+		/*
 		 * Makes the frame visible (it's invisible by default).
 		 */
 		frame.setVisible(true);
