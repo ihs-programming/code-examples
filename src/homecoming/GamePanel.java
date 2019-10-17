@@ -19,6 +19,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
+	/*
+	 * This known as a static constructor
+	 */
 	static {
 		BufferedImage img = null;
 		BufferedImage background = null;
@@ -32,24 +35,34 @@ public class GamePanel extends JPanel {
 		backgroundImg = background;
 		heartImg = makeColorTransparent(img, Color.WHITE);
 	}
+
 	static final Image heartImg;
 	static final Image backgroundImg;
 	static final Font font = new Font("Courier", Font.BOLD, 30);
 
 	@Override
 	public void paintComponent(Graphics g) {
+		/*
+		 * The getWidth() and getHeight() methods are inherited from JFrame
+		 */
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), null);
 
-
+		/*
+		 * Draw the greeting in the center of the screen
+		 */
 		g.setColor(Color.WHITE);
 		g.setFont(font);
 		drawCenteredString(g, String.format(Main.GREETING, Main.NAME), new Rectangle(0, 0, getWidth(), getHeight()),
 				font);
-		
-		for (Heart heart : Main.state.getHearts()) {
+
+		/*
+		 * Draw all of the hearts. Note that because it is drawn later, these will show
+		 * up on top of the text and background.
+		 */
+		for (Heart heart : Main.gameState.getHearts()) {
 			g.drawImage(heartImg, heart.pos.x, heart.pos.y, GameState.FALLING_HEART_SIZE, GameState.FALLING_HEART_SIZE,
 					null);
 		}
@@ -71,7 +84,8 @@ public class GamePanel extends JPanel {
 		g.drawString(text, x, y);
 	}
 
-	// Copied from https://www.javaworld.com/article/2074105/making-white-image-backgrounds-transparent-with-java-2d-groovy.html
+	// Copied from
+	// https://www.javaworld.com/article/2074105/making-white-image-backgrounds-transparent-with-java-2d-groovy.html
 	public static Image makeColorTransparent(final BufferedImage im, final Color color) {
 		final ImageFilter filter = new RGBImageFilter() {
 			// the color we are looking for (white)... Alpha bits are set to opaque

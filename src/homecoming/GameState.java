@@ -16,12 +16,19 @@ public class GameState {
 		hearts = new ArrayList<>();
 	}
 
+	/*
+	 * Update the game state
+	 */
 	public void update() {
 		counter++;
+		
+		/*
+		 * Every 25 ticks, create a new heart
+		 */
 		if(counter % 25 == 0) {			
-			Point pos = new Point((int) (500 * Math.random()), 0);
+			Point position = new Point((int) (500 * Math.random()), 0);
 			int speed = (int) (4 * Math.random()) + 2;
-			hearts.add(new Heart(pos, speed));
+			hearts.add(new Heart(position, speed));
 		}
 
 		for (Heart heart : hearts) {

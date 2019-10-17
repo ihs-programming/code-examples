@@ -6,9 +6,13 @@ import javax.swing.JFrame;
 
 public class Main {
 	static final String NAME = "Alex";
+	
+	/*
+	 * This is a format string, passed to String.format(GREETING, NAME);
+	 */
 	static final String GREETING = "Homecoming %s?";
 	
-	static final GameState state = new GameState();
+	static final GameState gameState = new GameState();
 	public static void main(String args[]) throws InterruptedException {
 		JFrame frame = new JFrame("Homecoming?");
 
@@ -26,7 +30,13 @@ public class Main {
 		while (true) {
 			long startTime = System.currentTimeMillis();
 
-			state.update();
+			/*
+			 * Update the game state
+			 */
+			gameState.update();
+			/*
+			 * Repaint the frame. 
+			 */
 			frame.repaint();
 
 			long elapsedTime = System.currentTimeMillis() - startTime;
