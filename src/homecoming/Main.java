@@ -10,7 +10,9 @@ public class Main {
 	/*
 	 * This is a format string, passed to String.format(GREETING, NAME);
 	 */
-	static final String GREETING = "Homecoming %s?";
+	static String GREETING = "Homecoming %s?";
+	
+	static boolean jumpScare = false;
 	
 	static final GameState gameState = new GameState();
 	public static void main(String args[]) throws InterruptedException {
@@ -18,6 +20,7 @@ public class Main {
 
 		GamePanel game = new GamePanel();
 		frame.add(game);
+		frame.addKeyListener(gameState);
 
 		frame.setPreferredSize(new Dimension(500, 500));
 		frame.pack();

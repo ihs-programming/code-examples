@@ -24,19 +24,23 @@ public class GamePanel extends JPanel {
 	 */
 	static {
 		BufferedImage img = null;
+		BufferedImage jumpScare = null;
 		BufferedImage background = null;
 		try {
 			img = ImageIO.read(new File("download.png"));
+			jumpScare = ImageIO.read(new File("jumpscare.png"));
 			background = ImageIO.read(new File("download.jpg"));
 		} catch (IOException ioe) {
 			System.err.println("Fatal error: Failed to load images");
 			System.exit(1);
 		}
 		backgroundImg = background;
+		jumpScareImg = jumpScare;
 		heartImg = makeColorTransparent(img, Color.WHITE);
 	}
 
 	static final Image heartImg;
+	static final Image jumpScareImg;
 	static final Image backgroundImg;
 	static final Font font = new Font("Courier", Font.BOLD, 30);
 
@@ -48,7 +52,7 @@ public class GamePanel extends JPanel {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 
-		g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), null);
+		g.drawImage(Main.jumpScare? jumpScareImg: backgroundImg, 0, 0, getWidth(), getHeight(), null);
 
 		/*
 		 * Draw the greeting in the center of the screen
