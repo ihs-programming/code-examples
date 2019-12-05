@@ -1,4 +1,4 @@
-package tictactoe;
+package rps;
 
 /**
  * The functions will be called in alternating order. First play() and then getResult(). 
