@@ -73,8 +73,6 @@ public interface Grid
      * If this Grid is not yet a finished game, this returns PLAYEREMPTY
      */
     public int getWinningPlayer();
-    
-    public boolean makeMove(int col);
 
     public void undo();
 }

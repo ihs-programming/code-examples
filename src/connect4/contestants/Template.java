@@ -4,7 +4,12 @@ import connect4.connectFour.Grid;
 
 public class Template implements Player {
 
-    // hard-coded to start in the middle, and only go through the decision tree if it can't put it in the middle
+    /**
+     * You should write your logic here
+     *
+     * @param g  the game grid
+     * @return a 0-indexed to drop a piece in
+     */
     public int getMoveColumn(Grid g) {
         while(true){
             int i = (int) (g.getCols() * Math.random());
@@ -14,6 +19,9 @@ public class Template implements Player {
     }
 
 
+    /**
+     * @return Your bot's (or your) name
+     */
     public String getPlayerName() {
         return "Template";
     }
