@@ -9,6 +9,23 @@ public class Board implements Grid
     private int nextPlayer;
     private int[][] playerAtPosition;
     private ArrayList<Integer> undoList;
+    
+    public Grid clone() {
+    	Board ret = new Board(rows, cols);
+    	
+    	ret.undoList = new ArrayList<Integer>(undoList);
+    	ret.playerAtPosition = new int[rows][cols];
+    	
+    	for(int i = 0; i < rows; i++) {
+    		for(int j = 0; j < cols; j++) {
+    			ret.playerAtPosition[i][j] = playerAtPosition[i][j];
+    		}
+    	}
+    	
+    	ret.nextPlayer = nextPlayer;
+    	
+    	return ret;
+    }
 
     public Board(int rowsP, int colsP)
     {

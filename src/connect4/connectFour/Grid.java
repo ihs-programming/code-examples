@@ -75,4 +75,6 @@ public interface Grid
     public int getWinningPlayer();
 
     public void undo();
+    
+    public Grid clone();
 }
